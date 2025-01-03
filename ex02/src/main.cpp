@@ -6,11 +6,11 @@
 /*   By: crasche <crasche@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/07 16:36:52 by crasche       #+#    #+#                 */
-/*   Updated: 2025/01/03 12:15:00 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/03 12:12:45 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ClapTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
 int main(void)
 {
@@ -70,6 +70,37 @@ int main(void)
 
 		ClapTrap unusedstuff4;
 		unusedstuff4.attack("EVERYONE");
+	}
+	{
+		std::cout << "\n\tTEST 5 (Scav with 100HP and guardGate):" << std::endl;
+		ScavTrap scav = ScavTrap("scav");
+
+		scav.attack("EVERYONE");
+		scav.guardGate();
+		scav.takeDamage(50);
+		scav.beRepaired(1);
+		scav.takeDamage(50);
+		scav.takeDamage(50);
+	}
+	{
+		std::cout << "\n\tTEST 6 (Scav construction/destruction chaining):" << std::endl;
+		ScavTrap scav = ScavTrap("scav");
+	}
+	{
+		std::cout << "\n\tTEST 5 (Frag with 100HP, 100 energy and highFivesGuys):" << std::endl;
+		FragTrap frag = FragTrap("frag");
+
+		frag.guardGate();
+		frag.highFivesGuys();
+		for (int i = 1; i <= 101; i++)
+		{
+			std::cout << "Attack " << i << ":\t";
+			frag.attack("ME");
+		}
+	}
+	{
+		std::cout << "\n\tTEST 8 (Frag construction/destruction chaining):" << std::endl;
+		FragTrap frag = FragTrap("frag");
 	}
 	return (0);
 }

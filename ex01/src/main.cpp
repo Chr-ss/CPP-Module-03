@@ -6,11 +6,11 @@
 /*   By: crasche <crasche@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/07 16:36:52 by crasche       #+#    #+#                 */
-/*   Updated: 2025/01/02 14:27:55 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/03 12:14:52 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ClapTrap.hpp"
+#include "../inc/ScavTrap.hpp"
 
 int main(void)
 {
@@ -29,18 +29,11 @@ int main(void)
 		ClapTrap clap1 = ClapTrap("clap1");
 		ClapTrap clap2 = ClapTrap("clap2");
 		
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
-		clap1.attack("clap2");
+		for (int i = 1; i <= 11; i++)
+		{
+			std::cout << "Attack " << i << ":\t";
+			clap1.attack("clap2");
+		}
 		clap2.takeDamage(5);
 		clap2.beRepaired(100);
 		clap2.takeDamage(50);
@@ -50,7 +43,7 @@ int main(void)
 		clap2.takeDamage(1);
 	}
 	{
-		std::cout << "\n\tTEST 2:" << std::endl;
+		std::cout << "\n\tTEST 2 (UINT_MAX):" << std::endl;
 		ClapTrap chriss = ClapTrap("Chriss");
 		ClapTrap isla = ClapTrap("Isla");
 
@@ -63,7 +56,7 @@ int main(void)
 		isla.attack("EVERYONE");
 	}
 	{
-		std::cout << "\n\tTEST 4:" << std::endl;
+		std::cout << "\n\tTEST 4 (Operators):" << std::endl;
 		ClapTrap unusedstuff1("unusedstuff1");
 		ClapTrap unusedstuff2("unusedstuff2");
 
@@ -77,7 +70,21 @@ int main(void)
 
 		ClapTrap unusedstuff4;
 		unusedstuff4.attack("EVERYONE");
+	}
+	{
+		std::cout << "\n\tTEST 5 (Scav with 100HP and guardGate):" << std::endl;
+		ScavTrap scav = ScavTrap("scav");
 
+		scav.attack("EVERYONE");
+		scav.guardGate();
+		scav.takeDamage(50);
+		scav.beRepaired(1);
+		scav.takeDamage(50);
+		scav.takeDamage(50);
+	}
+	{
+		std::cout << "\n\tTEST 6 (Scav construction/destruction chaining):" << std::endl;
+		ScavTrap scav = ScavTrap("scav");
 	}
 	return (0);
 }

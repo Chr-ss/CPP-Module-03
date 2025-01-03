@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/02 14:06:33 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/03 12:13:40 by christian.r   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void ClapTrap::attack(const std::string& target)
 	else
 	{
 		_energy -= 1;
-		std::cout << PINK << "ClapTrap "<< _name <<" attacks "<< target <<", causing "<< _attack <<" points of damage!" << RESET <<std::endl;
+		std::cout << PINK << "ClapTrap "<< _name <<" attacks "<< target <<" causing "<< _attack <<" points damage!" << RESET <<std::endl;
 	}
 }
 
@@ -47,7 +47,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 			_hp = 0;
 		else
 			_hp -= amount;
-		std::cout << MAGENTA << "ClapTrap "<< _name <<" has taken "<< amount <<" of damage." << RESET <<std::endl;
+		std::cout << MAGENTA << "ClapTrap "<< _name <<" has taken "<< amount <<" damage." << RESET <<std::endl;
 	}
 	
 }
@@ -65,7 +65,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 		else
 			_hp += amount;
 		_energy -= 1;
-		std::cout << GREEN << "ClapTrap "<< _name <<" has been repaired by "<< amount <<" of damage."<< RESET <<std::endl;
+		std::cout << GREEN << "ClapTrap "<< _name <<" has been repaired by "<< amount <<" damage."<< RESET <<std::endl;
 	}
 	
 }
