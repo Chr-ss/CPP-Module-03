@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/03 11:32:17 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/06 11:53:54 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@
 class FragTrap : public ScavTrap {
 public:
 	// Constructor
-	FragTrap() = default;
+	FragTrap();
 	FragTrap(const std::string &name);
 	// Destructor
 	~FragTrap();
 
 	// Copy Constructor
-	FragTrap(const FragTrap &toCopy) = default;
+	FragTrap(const FragTrap &toCopy);
 	// Copy assignment operator
-	FragTrap& operator=(const FragTrap &other) = default;
+	FragTrap& operator=(const FragTrap &other);
 	// Move Constructor
-	FragTrap(FragTrap&& other) noexcept = default;
+	FragTrap(FragTrap&& other) noexcept;
 	// Move Assignment Operator
-	FragTrap& operator=(FragTrap&& other) noexcept = default;
+	FragTrap& operator=(FragTrap&& other) noexcept;
 
 	// Public functions
 	void highFivesGuys(void);

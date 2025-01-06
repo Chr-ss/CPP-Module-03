@@ -6,7 +6,7 @@
 /*   By: crasche <crasche@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/07 16:36:52 by crasche       #+#    #+#                 */
-/*   Updated: 2025/01/03 12:12:45 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/06 12:14:10 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,30 @@
 int main(void)
 {
 	{
-		std::cout << "\n\tTEST 1:" << std::endl;
+		std::cout << "\n\tTEST 1 (HP):" << std::endl;
 		ClapTrap isla = ClapTrap("Isla");
 		ClapTrap chriss = ClapTrap("Chriss");
-		
+
 		isla.attack("Chriss");
 		chriss.takeDamage(5);
-		chriss.takeDamage(50);
+		chriss.takeDamage(5);
 		chriss.takeDamage(1);
 	}
 	{
-		std::cout << "\n\tTEST 2:" << std::endl;
+		std::cout << "\n\tTEST 2 (Energy):" << std::endl;
+
 		ClapTrap clap1 = ClapTrap("clap1");
-		ClapTrap clap2 = ClapTrap("clap2");
-		
 		for (int i = 1; i <= 11; i++)
 		{
 			std::cout << "Attack " << i << ":\t";
 			clap1.attack("clap2");
 		}
+		clap1.beRepaired(10);
+	}
+	{
+		std::cout << "\n\tTEST 3 (DMG & repair):" << std::endl;
+		ClapTrap clap2 = ClapTrap("clap2");
+
 		clap2.takeDamage(5);
 		clap2.beRepaired(100);
 		clap2.takeDamage(50);
@@ -43,7 +48,7 @@ int main(void)
 		clap2.takeDamage(1);
 	}
 	{
-		std::cout << "\n\tTEST 2 (UINT_MAX):" << std::endl;
+		std::cout << "\n\tTEST 4 (UINT_MAX):" << std::endl;
 		ClapTrap chriss = ClapTrap("Chriss");
 		ClapTrap isla = ClapTrap("Isla");
 
@@ -56,20 +61,31 @@ int main(void)
 		isla.attack("EVERYONE");
 	}
 	{
-		std::cout << "\n\tTEST 4 (Operators):" << std::endl;
-		ClapTrap unusedstuff1("unusedstuff1");
-		ClapTrap unusedstuff2("unusedstuff2");
+		std::cout << "\n\tTEST 5 (Operators):" << std::endl;
+		ClapTrap operators1("operators1");
+		ClapTrap operators2("operators2");
 
-		unusedstuff1.attack("EVERYONE");
-		unusedstuff2.attack("EVERYONE");
+		operators1.attack("EVERYONE");
+		operators2.attack("EVERYONE");
 
-		ClapTrap unusedstuff3(unusedstuff2);
-		unusedstuff3.attack("EVERYONE");
-		unusedstuff3 = unusedstuff1;
-		unusedstuff3.attack("EVERYONE");
+		std::cout << "\tCopy constructor:" << std::endl;
+		ClapTrap operators3(operators2);
+		operators3.attack("EVERYONE");
 
-		ClapTrap unusedstuff4;
-		unusedstuff4.attack("EVERYONE");
+		std::cout << "\tCopy assignment operator:" << std::endl;
+		operators3 = operators1;
+		operators3.attack("EVERYONE");
+
+		std::cout << "\tMove assignment operator:" << std::endl;
+		ClapTrap operators5(std::move(operators2));
+		operators5.attack("EVERYONE");
+		operators2.attack("EVERYONE");
+
+		std::cout << "\tMove assignment operator:" << std::endl;
+		ClapTrap operators4;
+		operators4 = std::move(operators1);
+		operators4.attack("EVERYONE");
+		operators1.attack("EVERYONE");
 	}
 	{
 		std::cout << "\n\tTEST 5 (Scav with 100HP and guardGate):" << std::endl;
@@ -78,9 +94,10 @@ int main(void)
 		scav.attack("EVERYONE");
 		scav.guardGate();
 		scav.takeDamage(50);
-		scav.beRepaired(1);
+		scav.beRepaired(50);
 		scav.takeDamage(50);
 		scav.takeDamage(50);
+		scav.takeDamage(1);
 	}
 	{
 		std::cout << "\n\tTEST 6 (Scav construction/destruction chaining):" << std::endl;

@@ -6,16 +6,67 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:18 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/03 12:13:40 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/06 12:10:03 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/ClapTrap.hpp"
 
 // Constructor
+ClapTrap::ClapTrap() : _name(""), _hp(0), _energy(0), _attack(0)
+{
+	std::cout << BLUE << "Default constructor without name called." << RESET <<std::endl;
+}
+
 ClapTrap::ClapTrap(const std::string &name) : _name(name), _hp(10), _energy(10), _attack(0)
 {
-	std::cout << BLUE << "ClapTrap constructor for "<< _name <<" called." << RESET << std::endl;
+	std::cout << BLUE << "Default constructor for "<< _name <<" called." << RESET <<std::endl;
+}
+
+// Copy constructor
+ClapTrap::ClapTrap(const ClapTrap &toCopy) : _name(toCopy._name), _hp(toCopy._hp), _energy(toCopy._energy), _attack(toCopy._attack)
+{
+	std::cout << BLUE << "Copy constructor for "<< _name <<" called." << RESET <<std::endl;
+}
+
+// Copy assignment operator
+ClapTrap &ClapTrap::operator=(const ClapTrap &toCopy)
+{
+	if (this == &toCopy)
+		return *this;
+	_name = toCopy._name;
+	_hp = toCopy._hp;
+	_energy = toCopy._energy;
+	_attack = toCopy._attack;
+	std::cout << BLUE << "Copy assignment operator for "<< _name <<" called." << RESET <<std::endl;
+	return *this;
+}
+
+// Move constructor
+ClapTrap::ClapTrap(ClapTrap &&toMove) noexcept : _name(toMove._name), _hp(toMove._hp), _energy(toMove._energy), _attack(toMove._attack)
+{
+	toMove._name = "";
+	toMove._hp = 0;
+	toMove._energy = 0;
+	toMove._attack = 0;
+	std::cout << BLUE << "Move constructor for "<< _name <<" called." << RESET <<std::endl;
+}
+
+// Move assignment operator
+ClapTrap &ClapTrap::operator=(ClapTrap &&toMove) noexcept
+{
+	if (this == &toMove)
+		return *this;
+	_name = toMove._name;
+	_hp = toMove._hp;
+	_energy = toMove._energy;
+	_attack = toMove._attack;
+	toMove._name = "";
+	toMove._hp = 0;
+	toMove._energy = 0;
+	toMove._attack = 0;
+	std::cout << BLUE << "Move assignment operator for "<< _name <<" called." << RESET <<std::endl;
+	return *this;
 }
 
 // Destructor
@@ -49,7 +100,7 @@ void ClapTrap::takeDamage(unsigned int amount)
 			_hp -= amount;
 		std::cout << MAGENTA << "ClapTrap "<< _name <<" has taken "<< amount <<" damage." << RESET << std::endl;
 	}
-	
+
 }
 
 void ClapTrap::beRepaired(unsigned int amount)
@@ -67,5 +118,5 @@ void ClapTrap::beRepaired(unsigned int amount)
 		_energy -= 1;
 		std::cout << GREEN << "ClapTrap "<< _name <<" has been repaired by "<< amount <<" damage."<< RESET << std::endl;
 	}
-	
+
 }

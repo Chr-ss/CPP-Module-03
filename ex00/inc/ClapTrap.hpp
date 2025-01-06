@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/02 14:03:11 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/06 11:41:51 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <cctype>
 # include <iostream>
+# include <climits>
 
 # define RESET          "\033[0m"
 # define BLACK          "\033[30m"
@@ -51,19 +52,19 @@ private:
 	unsigned int				_attack;
 public:
 	// Constructor
-	ClapTrap() = default;
+	ClapTrap();
 	ClapTrap(const std::string &name);
 	// Destructor
 	~ClapTrap();
 
 	// Copy Constructor
-	ClapTrap(const ClapTrap &toCopy) = default;
+	ClapTrap(const ClapTrap &toCopy);
 	// Copy assignment operator
-	ClapTrap& operator=(const ClapTrap &other) = default;
+	ClapTrap& operator=(const ClapTrap &other);
 	// Move Constructor
-	ClapTrap(ClapTrap&& other) noexcept = default;
+	ClapTrap(ClapTrap&& other) noexcept;
 	//Move Assignment Operator
-	ClapTrap& operator=(ClapTrap&& other) noexcept = default;
+	ClapTrap& operator=(ClapTrap&& other) noexcept;
 
 	// Public functions
 	void attack(const std::string& target);

@@ -6,7 +6,7 @@
 /*   By: christian.rasche <christian.rasche@stud      +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/11/09 14:58:12 by christian.r   #+#    #+#                 */
-/*   Updated: 2025/01/02 19:54:40 by christian.r   ########   odam.nl         */
+/*   Updated: 2025/01/06 11:51:37 by crasche       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@
 class ScavTrap : public ClapTrap {
 public:
 	// Constructor
-	ScavTrap() = default;
+	ScavTrap();
 	ScavTrap(const std::string &name);
 	// Destructor
 	~ScavTrap();
 
 	// Copy Constructor
-	ScavTrap(const ScavTrap &toCopy) = default;
+	ScavTrap(const ScavTrap &toCopy);
 	// Copy assignment operator
-	ScavTrap& operator=(const ScavTrap &other) = default;
+	ScavTrap& operator=(const ScavTrap &other);
 	// Move Constructor
-	ScavTrap(ScavTrap&& other) noexcept = default;
+	ScavTrap(ScavTrap&& other) noexcept;
 	// Move Assignment Operator
-	ScavTrap& operator=(ScavTrap&& other) noexcept = default;
+	ScavTrap& operator=(ScavTrap&& other) noexcept;
 
 	// Public functions
 	void attack(const std::string& target);
